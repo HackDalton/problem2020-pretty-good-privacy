@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" class="h-100">
+
+<head>
+    <title>Pretty Good Privacy</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <style>
+        .container {
+            width: auto;
+            max-width: 680px;
+            padding: 0 15px;
+        }
+    </style>
+</head>
+
+<body class="d-flex flex-column h-100">
+    <!-- Begin page content -->
+    <main role="main" class="flex-shrink-0">
+        <div class="container">
+            <h1 class="mt-5">Hi.</h1>
+            <p class="lead">Send your PGP key and we'll send you the encrypted flag.</p>
+            {{if .ShowError}}
+            <div class="alert alert-warning" role="alert">
+                {{.Err}}
+            </div>
+            {{end}}
+            <form id="form" action="/sendKey" method="POST">
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">PGP Public Key</label>
+                    <textarea class="form-control" name="key"></textarea>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Get flag!">
+            </form>
+            <p>Note that our signature is available at the <a
+                    href="https://keys.openpgp.org/search?q=hi%40hackdalton.com">OpenPGP keysever</a>.</p>
+        </div>
+    </main>
+</body>
+
+</html>
